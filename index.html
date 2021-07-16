@@ -25,10 +25,35 @@
       font-weight: 300;
     }
 
+    @keyframes blink {
+      0% {
+        filter: brightness(1);
+        text-shadow: 0 0 2px white;
+      }
+
+      50% {
+        filter: brightness(0.6);
+        text-shadow: none;
+      }
+
+      100% {
+        filter: brightness(1);
+        text-shadow: 0 0 2px white;
+      }
+    }
+
     a {
       font-weight: 900;
+      font-size: 1.3rem;
       color: inherit;
       text-decoration: none;
+      animation: blink 2s ease infinite;
+    }
+
+    a:hover {
+      filter: brightness(1.5);
+      text-shadow: 0 0 3px white;
+      animation: none;
     }
   </style>
 </head>
