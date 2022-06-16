@@ -3,6 +3,10 @@ plugins:
 relative_links:
   enabled: true
   collections: true
+titles_from_headings:
+  enabled:     false
+  strip_title: false
+  collections: false
 include:
   - CONTRIBUTING.md
   - README.md
