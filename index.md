@@ -1,4 +1,4 @@
-![Typing SVG](https://readme-typing-svg.herokuapp.com?size=24&duration=3000&color=71C497&vCenter=true&height=100&lines=Hii+%F0%9F%91%8B+I'm+Piyush)
+<img src="https://readme-typing-svg.herokuapp.com?size=24&duration=3000&color=71C497&vCenter=true&height=100&lines=Hii+%F0%9F%91%8B+I'm+Piyush" />
 
 <img align='right' src="https://cutt.ly/lnfmbqL" width="240">
 
@@ -69,7 +69,7 @@
 <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs?username=troglodytto&show_icons=true&locale=en&layout=compact&hide=php,html,scss&theme=vue&border_color=41b883&border_radius=18"/>
 </p>
 
-![Typing SVG](https://activity-graph.herokuapp.com/graph?username=troglodytto&theme=github-light&hide_border=true)
+<img src="https://activity-graph.herokuapp.com/graph?username=troglodytto&theme=github-light&hide_border=true" />
 
 ## Connect
 <p align="center">
@@ -80,7 +80,7 @@
     <img src="https://cutt.ly/CnfmoSv" alt="troglodytto" height="48" />
   </a>
   <a href="https://medium.com/@troglodytto" target="blank">
-    <img src="https://cutt.ly/gnfmabL" alt="@aether-devweb" height="48" />
+    <img src="https://cutt.ly/gnfmabL" alt="@troglodytto" height="48" />
   </a>
   <a href="https://dev.to/troglodytto">
     <img src="https://d2fltix0v2e0sb.cloudfront.net/dev-rainbow.svg" height="48" />
