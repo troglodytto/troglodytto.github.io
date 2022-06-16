@@ -9,26 +9,26 @@
     - &nbsp;**λ**&nbsp; Computer Science
     - &nbsp;**∮**&nbsp; Math
     - 🧠 Biology
-    - 🔑 Crypto **ETH | BTC | XRP | ADA | SOL**
+    - 🔑 Crypto <strong>ETH | BTC | XRP | ADA | SOL</strong>
         
 - ### 🦄 **I am working on a simple HTTP/1.1 Server - [hyperion](https://github.com/troglodytto/hyperion)**
 - ### 🦄 **And I am working on a minimal x86 Kernel - [zeno](https://github.com/troglodytto/zeno)**
 - ### 🎵 **Here's some [music](https://youtube.com/playlist?list=PLuWs5sMPaxNj2aS1MtLMgcUsNuldIeynG) 👈 that I like**
     <!-- BLOG-POST-LIST:START -->
-  - [Danny Olson &amp; Highlnd - Not Letting Go &lpar;Lyrics&rpar; feat. Micah Martin](https://www.youtube.com/watch?v=sykRL-bql0o)
-  - [BEAUZ - Keep On Dancing &lpar;feat. Heleen&rpar; [Monstercat Release]](https://www.youtube.com/watch?v=5Fde9CYuRgc)
+  - [Danny Olson & Highlnd - Not Letting Go (Lyrics) feat. Micah Martin](https://www.youtube.com/watch?v=sykRL-bql0o)
+  - [BEAUZ - Keep On Dancing (feat. Heleen) [Monstercat Release]](https://www.youtube.com/watch?v=5Fde9CYuRgc)
   - [Beautiful Guitar TikTok Chain by haileyknox but its actually good lol](https://www.youtube.com/watch?v=96Iy7mHGnKc)
-  - [STAR SEED - Cayenne &lpar;feat. Zoe Moon&rpar; [NCS Release]](https://www.youtube.com/watch?v=7pswR_SkCrM)
-  - [WINARTA - One Love &lpar;Lyrics&rpar;](https://www.youtube.com/watch?v=HlAdXLBTQZ4)
-  - [Nirvana - Something In The Way&lpar;Full Epic Trailer Version&rpar; | The Batman Trailer Song](https://www.youtube.com/watch?v=sXFiaJr9los)
+  - [STAR SEED - Cayenne (feat. Zoe Moon) [NCS Release]](https://www.youtube.com/watch?v=7pswR_SkCrM)
+  - [WINARTA - One Love (Lyrics)](https://www.youtube.com/watch?v=HlAdXLBTQZ4)
+  - [Nirvana - Something In The Way (Full Epic Trailer Version) | The Batman Trailer Song](https://www.youtube.com/watch?v=sXFiaJr9los)
   - [Champagne Drip &amp; Lucii - Me and You](https://www.youtube.com/watch?v=mE9DBBq-Re4)
-  - [William Black &amp; Fairlane - Butterflies &lpar;Lyrics&rpar; ft. Dia Frampton](https://www.youtube.com/watch?v=-BBCg82L9gk)
-  - [OHEY - World Apart &lpar;feat. DNAKM &amp; Zeru&rpar; [Official Lyric Video]](https://www.youtube.com/watch?v=mkIcDdfHySc)
-  - [Porter Robinson - Get your Wish &lpar;Official Music Video&rpar;](https://www.youtube.com/watch?v=4SZEDBFPpgw)
-  - [Jason Ross - Chains &lpar;Lyrics&rpar; with RØRY](https://www.youtube.com/watch?v=i7VlHUyhMgQ)
-  - [Cosmo Sheldrake - Birthday Suit &lpar;Lyrics&rpar; | backwards, upside down and inside out](https://www.youtube.com/watch?v=_OviGu1uthM)
-  - [Rose Ellen Dix &lpar;feat. Mallory Hunter &amp; Jash&rpar;](https://www.youtube.com/watch?v=1YoFc7Ffxl4)
-  - [Scarlet Speedster &lpar;feat. Rhea Raj&rpar;](https://www.youtube.com/watch?v=cKHlfZgNyqk)
+  - [William Black &amp; Fairlane - Butterflies (Lyrics) ft. Dia Frampton](https://www.youtube.com/watch?v=-BBCg82L9gk)
+  - [OHEY - World Apart (feat. DNAKM &amp; Zeru) [Official Lyric Video]](https://www.youtube.com/watch?v=mkIcDdfHySc)
+  - [Porter Robinson - Get your Wish (Official Music Video)](https://www.youtube.com/watch?v=4SZEDBFPpgw)
+  - [Jason Ross - Chains (Lyrics) with RØRY](https://www.youtube.com/watch?v=i7VlHUyhMgQ)
+  - [Cosmo Sheldrake - Birthday Suit (Lyrics) | backwards, upside down and inside out](https://www.youtube.com/watch?v=_OviGu1uthM)
+  - [Rose Ellen Dix (feat. Mallory Hunter &amp; Jash)](https://www.youtube.com/watch?v=1YoFc7Ffxl4)
+  - [Scarlet Speedster (feat. Rhea Raj)](https://www.youtube.com/watch?v=cKHlfZgNyqk)
   - [Godspeed](https://www.youtube.com/watch?v=mQBy3Bn29KA)
 <!-- BLOG-POST-LIST:END -->
 
