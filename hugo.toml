@@ -1,0 +1,29 @@
+baseURL = 'https://localhost:1313/'
+languageCode = 'en-us'
+title = "Piyush Upadhyay's Blog"
+theme = "shibui"
+
+
+[menu]
+    [[menu.main]]
+        name = "Zeno"
+        url = "/posts/zeno"
+        weight = 1
+        identifier = "zeno"
+        [menu.main.params]
+          subtitle = "Writing an OS kernel in Rust"
+
+    [[menu.main]]
+        name = "Hyperion"
+        url = "/posts/hyperion"
+        weight = 2
+        identifier = "hyperion"
+        [menu.main.params]
+          subtitle = "Implementing the HTTP protocol from scratch"
+
+[markup]
+    [markup.highlight]
+        style = "rose-pine-dawn"
+        lineNos = true
+        lineNumbersInTable = false
+        noClasses = true
