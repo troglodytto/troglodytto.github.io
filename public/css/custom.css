@@ -1,0 +1,60 @@
+/* You can add custom style here */
+
+.terminal-nav ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal-nav a:hover {
+    text-decoration: underline;
+}
+
+.menu-entry {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25;
+    width: fit-content;
+}
+
+.menu-subtitle {
+    opacity: 0.8;
+}
+
+/*.highlight pre code * {
+    color: white;
+}*/
+
+pre,
+code,
+kbd,
+samp {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+}
+
+pre {
+    box-shadow: none;
+}
+
+.path-nav ol {
+    gap: 0.5rem;
+}
+
+h1 {
+    font-size: 1.125rem;
+    width: fit-content;
+    border-radius: 4px;
+}
+
+h2 {
+    font-size: 1rem;
+}
+
+.codeblock-filename {
+    width: 100%;
+    text-align: start;
+    display: flex;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
