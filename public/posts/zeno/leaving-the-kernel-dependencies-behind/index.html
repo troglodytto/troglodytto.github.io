@@ -1,0 +1,346 @@
+<!doctype html>
+<html
+    lang="en-us"
+    dir="ltr"
+    class="dark"
+>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+  Leaving the Kernel dependencies behind | Piyush Upadhyay&#39;s Blog
+</title>
+ 
+<link rel="canonical" href="http://localhost:1313/posts/zeno/leaving-the-kernel-dependencies-behind/" />
+
+
+<meta property="og:title" content="Leaving the Kernel dependencies behind" />
+
+<meta
+  property="og:type"
+  content="article"
+/>
+<meta property="og:url" content="http://localhost:1313/posts/zeno/leaving-the-kernel-dependencies-behind/" />
+ 
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Leaving the Kernel dependencies behind" />
+      
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Leaving the Kernel dependencies behind",
+    "url": "http:\/\/localhost:1313\/posts\/zeno\/leaving-the-kernel-dependencies-behind\/",
+    "datePublished": "2026-01-30T13:38:37\u002b05:30",
+    "dateModified": "2026-01-30T13:38:37\u002b05:30"
+  }
+</script>
+ <link rel="apple-touch-icon" sizes="57x57" href="/favicon_io/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/favicon_io/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/favicon_io/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/favicon_io/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/favicon_io/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/favicon_io/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/favicon_io/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/favicon_io/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/favicon_io/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon_io/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+<link rel="manifest" href="/favicon_io/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/favicon_io/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+ 
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/custom.css">
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+/>
+
+
+    </head>
+    <body>
+        <a href="#main-content" class="skip-link">Skip to content</a>
+        <header><nav class="path-nav">
+  <ol>
+    
+  
+    
+  
+    
+  
+    
+  
+  <li>
+    /
+    <a href="/">Piyush Upadhyay&#39;s Blog</a>
+    /
+  </li>
+
+  
+  <li>
+    
+    <a href="/posts/">Posts</a>
+    /
+  </li>
+
+  
+  <li>
+    
+    <a href="/posts/zeno/">Writing an OS in rust</a>
+    /
+  </li>
+
+  
+  <li class="current">
+    
+    <a href="/posts/zeno/leaving-the-kernel-dependencies-behind/">Leaving the Kernel dependencies behind</a>
+    
+  </li>
+
+  </ol>
+</nav>
+
+
+
+</header>
+        <main id="main-content">
+  <h1>Leaving the Kernel dependencies behind</h1>
+  
+
+
+  
+  
+  
+  
+
+  
+  <p>In the <a href="../getting-started">previous post</a> we settled on using Rust to write our OS so we&rsquo;ll set up a new rust application.</p>
+<p>Make sure you&rsquo;ve got rust installed on your computer.</p>
+<p>Here&rsquo;s a <a href="https://rust-lang.org/tools/install/">guide</a> on how to do that.</p>
+<p>Now let&rsquo;s create a new rust application.</p>
+<p>I&rsquo;ve chosen to call our OS <strong>&ldquo;Zeno&rdquo;</strong> (no particular reason, just sounds cool)</p>
+<figure class="highlight">
+    <pre
+        tabindex="0"
+        class="chroma"
+    ><code class="language-fish" data-lang="fish"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#9893a5"># create a new cargo project called &#39;zeno&#39;
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#d7827e">cargo</span> new zeno
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#9893a5"># run our application for good luck
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#d7827e">cargo</span> run
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>    <span style="color:#d7827e">Finished</span> `dev` profile <span style="color:#797593">[</span>unoptimized + debuginfo<span style="color:#797593">]</span> target<span style="color:#797593">(</span><span style="color:#d7827e">s</span><span style="color:#797593">)</span> in <span style="color:#ea9d34">0</span>.00s
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>     <span style="color:#d7827e">Running</span> `target/debug/zeno`
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span><span style="color:#d7827e">Hello</span>, world!</span></span></code></pre>
+</figure>
+<p>Great! the hardest part is done now.</p>
+<p>Rest will be <strong>easy.</strong></p>
+<p>Next. We need to make sure we remove any connection between our rust binary to our host operating system.</p>
+<p><strong>Here&rsquo;s why:</strong></p>
+<p>By default, rust links with your operating system libraries to do a lot of heavylifting.</p>
+<p>When you invoke the <code>println!</code> macro, rust makes syscalls to the host operating system to make stuff show up on your screen.</p>
+<p>When you allocate something, Rust relies on the operating system to manage memory for it. i.e the interaction between your rust programs, and the physical RAM on your system</p>
+<p>Pretty much most of what you do in rust, whether it be related to I/O, Memory, Syscalls, the whole lot, in one way or another rust relies on your operating system.</p>
+<p>However, in our case, <strong>there is no OS</strong>. We are writing our <em>own</em> operating system. This means one simple thing.</p>
+<p>Whatever rust relies on to do those aforementioned things, Gone!</p>
+<p>What&rsquo;d happen when rust tries to access them? Nothing good that&rsquo;s for sure, so we need to get rid of any references to those things.</p>
+<p>Step 1. Tell rust to avoid using those things.</p>
+<p>Add the <code>#![no_std]</code> attribute at the top of your <code>main.rs</code> file, and run it.</p>
+<p>The <code>no_std</code> attribute explicitly blocks rust from linking any parts of its standard library in our binary (which is the rust compiler&rsquo;s default behvior)</p>
+<figure class="highlight">
+    <pre
+        tabindex="0"
+        class="chroma"
+    ><code class="language-rust" data-lang="rust"><span class="codeblock-filename">main.rs</span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#9893a5">#![no_std]</span> <span style="color:#9893a5">// &lt;- Add this line
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#286983">fn</span> <span style="color:#d7827e">main</span><span style="color:#797593">()</span> <span style="color:#797593">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>    <span style="color:#d7827e">println!</span><span style="color:#797593">(</span><span style="color:#ea9d34">&#34;Hello, world!&#34;</span><span style="color:#797593">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#797593">}</span></span></span></code></pre>
+</figure>
+<p>Pretty simple right? Well not quite. Trying to compile this code quickly reveals that the rust compiler is not happy.</p>
+<p>Although it gives pretty helpful error messages.</p>
+<figure class="highlight">
+    <pre
+        tabindex="0"
+        class="chroma"
+    ><code class="language-sh" data-lang="sh"><span class="codeblock-filename">compiling with the no_std attribute</span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>Compiling zeno v0.1.0 <span style="color:#797593">(</span>/path/to/zeno<span style="color:#797593">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>error: cannot find macro <span style="color:#ea9d34">`</span>println<span style="color:#ea9d34">`</span> in this scope
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>--&gt; src/main.rs:4:5
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#797593">|</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#ea9d34">4</span> <span style="color:#797593">|</span>     println!<span style="color:#797593">(</span><span style="color:#ea9d34">&#34;Hello, world!&#34;</span><span style="color:#797593">)</span><span style="color:#797593">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#797593">|</span>     ^^^^^^^
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>error: <span style="color:#ea9d34">`</span><span style="color:#9893a5">#[panic_handler]` function required, but not found</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>error: unwinding panics are not supported without std
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#797593">|</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#797593">=</span> help: using nightly cargo, use -Zbuild-std with <span style="color:#d7827e">panic</span><span style="color:#797593">=</span><span style="color:#ea9d34">&#34;abort&#34;</span> to avoid <span style="color:#d7827e">unwinding</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span><span style="color:#797593">=</span> note: since the core library is usually precompiled with <span style="color:#d7827e">panic</span><span style="color:#797593">=</span><span style="color:#ea9d34">&#34;unwind&#34;</span>, rebuilding your crate with <span style="color:#d7827e">panic</span><span style="color:#797593">=</span><span style="color:#ea9d34">&#34;abort&#34;</span> may not be enough to fix the problem
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>error: could not compile <span style="color:#ea9d34">`</span>zeno<span style="color:#ea9d34">`</span> <span style="color:#797593">(</span>bin <span style="color:#ea9d34">&#34;zeno&#34;</span><span style="color:#797593">)</span> due to <span style="color:#ea9d34">3</span> previous errors</span></span></code></pre>
+</figure>
+<p>Let&rsquo;s unpack this one step at a time</p>
+<figure class="highlight">
+    <pre
+        tabindex="0"
+        class="chroma"
+    ><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>error: cannot find macro <span style="color:#ea9d34">`</span>println<span style="color:#ea9d34">`</span> in this scope</span></span></code></pre>
+</figure>
+<p>This is pretty straightforward. We&rsquo;ve stripped rust of all its standard library references using the <code>#![no_std]</code> attribte. That includes the <code>println</code> macro as well.</p>
+<p>Unfortunately for us, we can&rsquo;t use that anymore. so we&rsquo;ll have to get rid of those invocations for now. We&rsquo;ll figure out a way to log things later.</p>
+<figure class="highlight">
+    <pre
+        tabindex="0"
+        class="chroma"
+    ><code class="language-rust" data-lang="rust"><span class="codeblock-filename">main.rs</span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#9893a5">#![no_std]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#286983">fn</span> <span style="color:#d7827e">main</span><span style="color:#797593">()</span> <span style="color:#797593">{}</span> <span style="color:#9893a5">// &lt;- `println` gone
+</span></span></span></code></pre>
+</figure>
+<p>But that&rsquo;s still not enough. There&rsquo;s one more compiler error that remains.</p>
+<figure class="highlight">
+    <pre
+        tabindex="0"
+        class="chroma"
+    ><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>error: <span style="color:#ea9d34">`</span><span style="color:#9893a5">#[panic_handler]` function required, but not found</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>error: unwinding panics are not supported without std</span></span></code></pre>
+</figure>
+<p>Hmmm. The <a href="https://doc.rust-lang.org/nomicon/panic-handler.html">Rustnomicon</a> says</p>
+<blockquote>
+<p>#[panic_handler] is used to define the behavior of panic! in #![no_std] applications. The #[panic_handler] attribute must be applied to a function with signature <strong>fn(&amp;PanicInfo) -&gt; !</strong> and such function must appear once in the dependency graph of a binary / dylib / cdylib crate.</p>
+</blockquote>
+<p>Cool. Let&rsquo;s add that to our code.</p>
+<figure class="highlight">
+    <pre
+        tabindex="0"
+        class="chroma"
+    ><code class="language-rust" data-lang="rust"><span class="codeblock-filename">main.rs</span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#9893a5">#![no_std]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#286983">use</span> <span style="color:#d7827e">core</span>::<span style="color:#d7827e">panic</span>::<span style="color:#d7827e">PanicInfo</span><span style="color:#797593">;</span> <span style="color:#9893a5">// &lt;- new
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#286983">fn</span> <span style="color:#d7827e">main</span><span style="color:#797593">()</span> <span style="color:#797593">{}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#9893a5">// 👇 new
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#9893a5">#[panic_handler]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#286983">fn</span> <span style="color:#d7827e">panic</span><span style="color:#797593">(</span><span style="color:#d7827e">_info</span>: <span style="color:#286983">&amp;</span><span style="color:#56949f">PanicInfo</span><span style="color:#797593">)</span> -&gt; <span style="color:#797593">!</span> <span style="color:#797593">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    <span style="color:#286983">loop</span> <span style="color:#797593">{}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#797593">}</span></span></span></code></pre>
+</figure>
+<p>We also need to add the following in our <code>Cargo.toml</code> to tell rust that we are no longer using <code>unwinding</code> panics.</p>
+<figure class="highlight">
+    <pre
+        tabindex="0"
+        class="chroma"
+    ><code class="language-toml" data-lang="toml"><span class="codeblock-filename">Cargo.toml</span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#797593">[</span><span style="color:#d7827e">profile</span><span style="color:#797593">.</span><span style="color:#d7827e">dev</span><span style="color:#797593">]</span> <span style="color:#9893a5"># &lt;- For dev mode</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#d7827e">panic</span> <span style="color:#797593">=</span> <span style="color:#ea9d34">&#34;abort&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#797593">[</span><span style="color:#d7827e">profile</span><span style="color:#797593">.</span><span style="color:#d7827e">release</span><span style="color:#797593">]</span> <span style="color:#9893a5"># &lt;- For release mode</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#d7827e">panic</span> <span style="color:#797593">=</span> <span style="color:#ea9d34">&#34;abort&#34;</span></span></span></code></pre>
+</figure>
+<p>Again, one of the default behaviors of the rust compiler is to unwind the stack on panic. This is done to allow cleanup of resources like memory, files, etc by calling <code>Drop::drop</code> methods on each stack frame. We&rsquo;ve disabled that behavior by setting <code>panic = &quot;abort&quot;</code> in our <code>Cargo.toml</code> because a panic in <em>our</em> kernel means immediate shutdown i.e aborting the entire kernel.</p>
+<p>Lastly, the compiler says:</p>
+<figure class="highlight">
+    <pre
+        tabindex="0"
+        class="chroma"
+    ><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>error: using <span style="color:#ea9d34">`</span>fn main<span style="color:#ea9d34">`</span> requires the standard library
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>  <span style="color:#797593">|</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>  <span style="color:#797593">=</span> help: use <span style="color:#ea9d34">`</span><span style="color:#9893a5">#![no_main]` to bypass the Rust generated entrypoint and declare a platform specific entrypoint yourself, usually with `#[no_mangle]`</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>error: could not compile <span style="color:#ea9d34">`</span>zeno<span style="color:#ea9d34">`</span> <span style="color:#797593">(</span>bin <span style="color:#ea9d34">&#34;zeno&#34;</span><span style="color:#797593">)</span> due to <span style="color:#ea9d34">1</span> previous error</span></span></code></pre>
+</figure>
+<p>Let&rsquo;s see. Let&rsquo;s remove the main function, and add the <code>#![no_main]</code> attribute as well</p>
+<figure class="highlight">
+    <pre
+        tabindex="0"
+        class="chroma"
+    ><code class="language-rust" data-lang="rust"><span class="codeblock-filename">main.rs</span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#9893a5">#![no_std]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#9893a5">#![no_main]</span> <span style="color:#9893a5">// &lt;- new
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#286983">use</span> <span style="color:#d7827e">core</span>::<span style="color:#d7827e">panic</span>::<span style="color:#d7827e">PanicInfo</span><span style="color:#797593">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#9893a5">#[panic_handler]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span><span style="color:#286983">fn</span> <span style="color:#d7827e">panic</span><span style="color:#797593">(</span><span style="color:#d7827e">_info</span>: <span style="color:#286983">&amp;</span><span style="color:#56949f">PanicInfo</span><span style="color:#797593">)</span> -&gt; <span style="color:#797593">!</span> <span style="color:#797593">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>    <span style="color:#286983">loop</span> <span style="color:#797593">{}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span><span style="color:#797593">}</span></span></span></code></pre>
+</figure>
+<p>Seems straight forward, although a bit counter intuitive. I mean, If we get rid of <code>main</code>, then what? We need some kind of entry point into our OS right?</p>
+<p>How does the hardware know where to start execution.</p>
+<p>We get a hint of that when we try to compile.</p>
+<p>We get a giant cryptic error.</p>
+<p>In the midst of all the chaos, we see the line</p>
+<figure class="highlight">
+    <pre
+        tabindex="0"
+        class="chroma"
+    ><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>rust-lld: error: undefined symbol: __libc_start_main</span></span></code></pre>
+</figure>
+<p>Where did this <code>__libc_start_main</code> come from?</p>
+<p>I thought we told rust to get rid of all references to any system libraries, including <code>libc</code></p>
+<p>Yes. Yes we did. And to be fair, Rust did honor our request. Rust did not include any system library references. In fact the error says the same thing too, that we <strong>didn&rsquo;t</strong> find any <code>__libc_start_main</code> symbol present</p>
+<p>However, rustc is just a compiler</p>
+<p>After the rust compiler is done with our code, it passes it to the linker, which then converts our generated code into an executable.</p>
+<p>The problem is, the default linker, in this case <code>rust-lld</code> assumes that we are using the C runtime, which of course we do not.</p>
+<p>We need to tell the linker to <em>not</em> include the C runtime.</p>
+<p>We do this by passing in additional arguments to our command</p>
+<figure class="highlight">
+    <pre
+        tabindex="0"
+        class="chroma"
+    ><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#9893a5"># Linux</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>cargo rustc -- -C link-arg<span style="color:#797593">=</span>-nostartfiles
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#9893a5"># Windows</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>cargo rustc -- -C link-args<span style="color:#797593">=</span><span style="color:#ea9d34">&#34;/ENTRY:_start /SUBSYSTEM:console&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span><span style="color:#9893a5"># macOS</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>cargo rustc -- -C link-args<span style="color:#797593">=</span><span style="color:#ea9d34">&#34;-e __start -static -nostartfiles&#34;</span></span></span></code></pre>
+</figure>
+<p>Now, if we try to build our kernel using these arguments.</p>
+<p>It shows</p>
+<figure class="highlight">
+    <pre
+        tabindex="0"
+        class="chroma"
+    ><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>Compiling zeno v0.1.0 <span style="color:#797593">(</span>/path/to/zeno<span style="color:#797593">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span> Finished <span style="color:#ea9d34">`</span>dev<span style="color:#ea9d34">`</span> profile <span style="color:#797593">[</span>unoptimized + debuginfo<span style="color:#797593">]</span> target<span style="color:#797593">(</span>s<span style="color:#797593">)</span> in 0.04s</span></span></code></pre>
+</figure>
+<p>🎉 Woohooo!!</p>
+<p>We&rsquo;re now completely detached from our OS boundations and have ventured into the deep waters. We&rsquo;re on our own now.</p>
+<p>Let&rsquo;s quickly clean things up, and streamline the process of building our kernel.</p>
+
+  <div class="time"><time datetime="January 30, 2026">January 30, 2026</time>
+</div>
+
+  
+  
+    <div class="comments">
+
+</div>
+  
+
+  
+    <div class="terminal-nav">
+      <div class="back-nav">
+        
+          <a href="/posts/zeno/" class="back-link">../</a>
+        
+      </div>
+    </div>
+  
+</main>
+        <footer><p>
+    &copy; Copyright 2026 &middot;
+    <a href="https://github.com/troglodytto">troglodytto</a>
+</p>
+</footer>
+    </body>
+</html>
