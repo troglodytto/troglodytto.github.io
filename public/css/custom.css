@@ -10,7 +10,7 @@
     --font-size-code: 0.9em;
     --font-size-base: 1em;
     --font-size-small: 0.9em;
-    --font-family-mono: "JetBrains Mono", monospace;
+    --font-family-mono: monospace;
     --color-border: hsl(var(--bg-h) var(--bg-s) calc(100% - var(--bg-l)) / 10%);
 }
 
@@ -95,4 +95,8 @@ h2 {
 hr {
     border: none;
     border-top: 1px solid var(--color-border);
+}
+
+pre.chroma {
+    font-family: "JetBrains Mono", monospace;
 }
