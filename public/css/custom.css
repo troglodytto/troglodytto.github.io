@@ -8,8 +8,8 @@
     --spacing-base: 1.25em;
     --pre-border-radius: 0.25rem;
     --font-size-code: 0.9em;
-    --font-size-base: 1em;
-    --font-size-small: 0.9em;
+    --font-size-base: 1.25em;
+    --font-size-small: 1.125em;
     --font-family-mono: monospace;
     --color-border: hsl(var(--bg-h) var(--bg-s) calc(100% - var(--bg-l)) / 10%);
 }
