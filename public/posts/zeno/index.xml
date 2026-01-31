@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Writing an OS in rust on Piyush Upadhyay&#39;s Blog</title>
-    <link>http://localhost:1313/posts/zeno/</link>
+    <link>https://troglodytto.github.io/posts/zeno/</link>
     <description>Recent content in Writing an OS in rust on Piyush Upadhyay&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 30 Jan 2026 13:38:37 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/zeno/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://troglodytto.github.io/posts/zeno/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Getting started</title>
-      <link>http://localhost:1313/posts/zeno/getting-started/</link>
+      <link>https://troglodytto.github.io/posts/zeno/getting-started/</link>
       <pubDate>Fri, 30 Jan 2026 13:38:37 +0530</pubDate>
-      <guid>http://localhost:1313/posts/zeno/getting-started/</guid>
+      <guid>https://troglodytto.github.io/posts/zeno/getting-started/</guid>
       <description>&lt;h2 id=&#34;the-why-behind-it&#34;&gt;The &amp;ldquo;Why&amp;rdquo; behind it.&lt;/h2&gt;&#xA;&lt;p&gt;Writing an OS is hard. Incredibly so.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve learned that the hard way while trying to write this blog.&lt;/p&gt;&#xA;&lt;p&gt;There are a lot of things can go wrong, and not many ways to figure out what did.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;But&lt;/strong&gt;.. as humans, that is exactly what we like. Things that challenge us, that push us to our limits.&lt;/p&gt;&#xA;&lt;p&gt;Figuring things out, learning as we encounter new things, and constantly moving forward, that&amp;rsquo;s what we are.&lt;/p&gt;</description>
     </item>
   </channel>
