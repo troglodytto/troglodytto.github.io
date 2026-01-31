@@ -1,0 +1,39 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+
+  {{/* Table of Contents */}}
+  {{ $hasToC := .Params.toc | default true }}
+  {{ $headers := findRE "<h[2-6]" .Content }}
+  {{ if and $hasToC (ge (len $headers) 1) }}
+    <nav class="toc">
+      <strong>Table of contents</strong>
+      <div class="toc-content">
+        {{ .TableOfContents }}
+      </div>
+    </nav>
+  {{ end }}
+
+  <!-- Content -->
+  {{ .Content }}
+  <div class="time">{{ partial "date.html" .Date}}</div>
+
+  <!-- Comments block -->
+  {{ if and .Content (default true (default .Site.Params.comments
+    .Params.comments))
+  }}
+    <div class="comments">{{- partial "comments" . -}}</div>
+  {{ end }}
+
+  {{ if not .IsHome }}
+    <div class="terminal-nav">
+      <div class="back-nav">
+        {{ with .Parent }}
+          <a href="{{ .RelPermalink }}" class="back-link">../</a>
+        {{ else }}
+          <a href="{{ "/" | relURL }}" class="back-link">../</a>
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
+{{ end }}
