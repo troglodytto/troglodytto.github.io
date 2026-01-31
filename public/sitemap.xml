@@ -2,9 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/hyperion/</loc>
-    <lastmod>2026-01-30T13:53:22+05:30</lastmod>
-  </url><url>
     <loc>http://localhost:1313/posts/</loc>
     <lastmod>2026-01-30T13:53:22+05:30</lastmod>
   </url><url>
@@ -12,9 +9,6 @@
     <lastmod>2026-01-30T13:38:37+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/zeno/getting-started/</loc>
-    <lastmod>2026-01-30T13:38:37+05:30</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/zeno/leaving-the-kernel-dependencies-behind/</loc>
     <lastmod>2026-01-30T13:38:37+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/zeno/</loc>

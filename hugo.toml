@@ -27,3 +27,8 @@ theme = "shibui"
         lineNos = true
         lineNumbersInTable = false
         noClasses = true
+
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'

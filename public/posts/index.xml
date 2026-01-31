@@ -6,14 +6,7 @@
     <description>Recent content in Posts on Piyush Upadhyay&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 31 Jan 2026 16:07:28 +0530</lastBuildDate>
+    <lastBuildDate></lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>All This for a Cat Gif?</title>
-      <link>http://localhost:1313/posts/all-this-for-a-cat-gif/</link>
-      <pubDate>Sat, 31 Jan 2026 16:07:28 +0530</pubDate>
-      <guid>http://localhost:1313/posts/all-this-for-a-cat-gif/</guid>
-      <description>&lt;p&gt;&lt;figure&gt;&#xA;  &lt;img&#xA;    src=&#34;https://picsum.photos/512/256&#34;&#xA;    alt=&#34;Cat Gif&#34;&#xA;    loading=&#34;lazy&#34;&#xA;    &#xA;  /&gt;&#xA;  &lt;figcaption&gt;Cat Gif&lt;/figcaption&gt;&#xA;  &lt;/figure&gt;&#xA;&#xA;&lt;button class=&#34;counter-btn&#34;&gt;Count: &lt;span class=&#34;counter-value&#34;&gt;0&lt;/span&gt;&lt;/button&gt;&#xA;&#xA;&lt;script&gt;&#xA;    (function () {&#xA;        const btn = document.currentScript.previousElementSibling;&#xA;        const value = btn.querySelector(&#34;.counter-value&#34;);&#xA;&#xA;        let count = 0;&#xA;        btn.addEventListener(&#34;click&#34;, () =&gt; {&#xA;            value.textContent = ++count;&#xA;        });&#xA;    })();&#xA;&lt;/script&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;In order to fully understand this, we must first understand a few things&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;The client-server architecture, i.e what&amp;rsquo;s a client and what&amp;rsquo;s a server?&lt;/li&gt;&#xA;&lt;li&gt;What&amp;rsquo;s JavaScript and why do we need it?&lt;/li&gt;&#xA;&lt;li&gt;What&amp;rsquo;s V8 Engine?&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;client-server-architecture&#34;&gt;Client Server Architecture&lt;/h2&gt;&#xA;&lt;h3 id=&#34;server&#34;&gt;Server&lt;/h3&gt;&#xA;&lt;p&gt;You can think of it as a shopkeeper or a receptionist&lt;/p&gt;</description>
-    </item>
   </channel>
 </rss>
