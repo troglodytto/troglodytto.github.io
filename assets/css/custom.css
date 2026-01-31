@@ -110,7 +110,8 @@ h3 {
 
 hr {
     border: none;
-    border-top: 1px solid var(--color-border);
+    border-top: 2px dotted
+        color-mix(in oklch, var(--color-primary), transparent 40%);
 }
 
 figure.highlight {
