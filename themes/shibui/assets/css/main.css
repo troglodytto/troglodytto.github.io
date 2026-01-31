@@ -35,7 +35,6 @@
     --gap-small: 0.5em;
 
     /* Breakpoints */
-    --breakpoint-mobile: 600px;
 }
 
 /* Common component styles */
@@ -348,7 +347,7 @@ h5 > code {
     padding: var(--spacing-sm) 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width: var(--breakpoint-mobile)) {
     .time-list li {
         grid-template-columns: 1fr;
         gap: var(--gap-small);

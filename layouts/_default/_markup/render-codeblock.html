@@ -1,10 +1,12 @@
 <figure class="highlight">
-    {{- if transform.CanHighlight .Type }}
+    {{- if transform.CanHighlight .Type }} {{- with .Attributes.title }}<span
+        class="codeblock-filename"
+        >{{ . | markdownify }}</span
+    >{{- end }}
     <pre
         tabindex="0"
         class="chroma"
     ><code class="language-{{ .Type }}" data-lang="{{ .Type }}">
-    {{- with .Attributes.title }}<span class="codeblock-filename">{{ . | markdownify }}</span>{{- end }}
       {{- with transform.HighlightCodeBlock . -}}
       {{ .Inner }}
       {{- end -}}

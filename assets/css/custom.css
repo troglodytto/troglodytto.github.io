@@ -4,8 +4,9 @@
     --bg-s: 0%;
     --bg-l: 99%;
 
+    --breakpoint-mobile: 600px;
     --color-primary: oklch(0.705 0.213 47.604);
-    --container-width: clamp(900px, 70dvw, 1200px);
+    --container-width: clamp(340px, 70dvw, 1200px);
     --spacing-base: 1.25em;
     --pre-border-radius: 0.25rem;
     --font-size-code: 0.8em;
@@ -26,10 +27,6 @@ strong {
     color: color-mix(in oklch, var(--color-primary), white 10%);
 }
 
-figure {
-    margin: var(--spacing-lg) 0;
-}
-
 figure img {
     padding: 0 !important;
     border: none;
@@ -48,8 +45,9 @@ figure img {
 
 .menu-entry {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
+    flex-direction: column;
     gap: 0.25;
     width: fit-content;
 }
@@ -82,7 +80,7 @@ h2 {
         transparent 90%
     );
     border-radius: 0.25rem;
-    padding-inline: 0.5rem;
+    padding: 0.25rem 0.5rem;
     width: fit-content;
     border: 1px dotted var(--color-primary);
     position: relative;
@@ -96,14 +94,6 @@ h2::after {
 
 h3 {
     color: var(--color-primary);
-}
-
-.codeblock-filename {
-    width: 100%;
-    text-align: start;
-    display: flex;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
 }
 
 .counter-btn {
@@ -123,6 +113,43 @@ hr {
     border-top: 1px solid var(--color-border);
 }
 
+figure.highlight {
+    overflow-x: auto;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--color-border);
+    border-radius: var(--pre-border-radius);
+    padding: 0.5rem 1rem;
+    position: relative;
+}
+
+figure.highlight {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+}
+
+.codeblock-filename {
+    width: 100%;
+    text-align: start;
+    display: flex;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    position: sticky;
+    left: 0px;
+}
+
 pre.chroma {
     font-family: "JetBrains Mono", monospace;
+    max-width: 100%;
+    min-width: max-content;
+    border: none;
+    border-radius: none;
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-width: 600px) {
+    h2::after {
+        display: none;
+    }
 }
