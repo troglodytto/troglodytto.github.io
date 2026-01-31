@@ -1,23 +1,5 @@
-/* Base theme knobs */
-:root {
-    --bg-h: 0;
-    --bg-s: 0%;
-    --bg-l: 99%;
-}
-
-.dark:root {
-    --bg-h: 0;
-    --bg-s: 0%;
-    --bg-l: 10%;
-}
-
 :root {
     /* Typography */
-    --spacing-base: 1.25em;
-    --font-family-mono: monospace;
-    --font-size-base: 1em;
-    --font-size-small: 0.9em;
-    --font-size-code: 0.95em;
 
     /* Spacing */
     --spacing-xs: calc(var(--spacing-base) * 0.25);
@@ -48,8 +30,6 @@
     );
 
     /* Layout */
-    --container-width: clamp(720px, 70dvw, 1200px);
-    --pre-border-radius: 0.75rem;
     --inline-border-radius: 0.375rem;
     --gap-base: 1em;
     --gap-small: 0.5em;

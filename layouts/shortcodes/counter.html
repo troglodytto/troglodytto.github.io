@@ -1,0 +1,13 @@
+<button class="counter-btn">Count: <span class="counter-value">0</span></button>
+
+<script>
+    (function () {
+        const btn = document.currentScript.previousElementSibling;
+        const value = btn.querySelector(".counter-value");
+
+        let count = 0;
+        btn.addEventListener("click", () => {
+            value.textContent = ++count;
+        });
+    })();
+</script>
