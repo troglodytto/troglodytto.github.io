@@ -54,7 +54,7 @@
 <meta name="theme-color" content="#ffffff">
  
       <link rel="stylesheet" href="/css/main.min.29353c5378846a0bc06f58d4f80a908eecf6618c65dd0c1252ca0511614e1b96.css" integrity="sha256-KTU8U3iEagvAb1jU&#43;AqQjuz2YYxl3QwSUsoFEWFOG5Y=" crossorigin="anonymous">
-      <link rel="stylesheet" href="/css/custom.min.b340609f7dd6fc5f5a722bdafe38815d29136b82029e153d8812993aab051ae7.css" integrity="sha256-s0Bgn33W/F9aciva/jiBXSkTa4ICnhU9iBKZOqsFGuc=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/custom.min.0af9f0fa79b7bfdd321bba4687aed5c266bdfd3e680402e48f6d6f686ed608fb.css" integrity="sha256-Cvnw&#43;nm3v90yG7pGh67Vwma9/T5oBALkj21vaG7WCPs=" crossorigin="anonymous">
  <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
@@ -118,42 +118,52 @@
   
   
   
+    <nav class="toc">
+      <strong>Table of contents</strong>
+      <div class="toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#setting-up">Setting up</a></li>
+    <li><a href="#leaving-kernel-dependencies-behind">Leaving kernel dependencies behind</a></li>
+  </ul>
+</nav>
+      </div>
+    </nav>
+  
 
   
   <p>In the <a href="../getting-started">previous post</a> we settled on using Rust to write our OS so we&rsquo;ll set up a new rust application.</p>
 <p>Make sure you&rsquo;ve got rust installed on your computer.</p>
 <p>Here&rsquo;s a <a href="https://rust-lang.org/tools/install/">guide</a> on how to do that.</p>
-<p>Now let&rsquo;s create a new rust application.</p>
-<p>I&rsquo;ve chosen to call our OS <strong>&ldquo;Zeno&rdquo;</strong> (no particular reason, just sounds cool)</p>
+<h2 id="setting-up">Setting up</h2>
+<p>Now let&rsquo;s create a new rust application. I&rsquo;ve chosen to call our OS <strong>&ldquo;Zeno&rdquo;</strong> (no particular reason, just sounds cool)</p>
 <figure class="highlight">
     <pre
         tabindex="0"
         class="chroma"
     ><code class="language-fish" data-lang="fish"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#9893a5"># create a new cargo project called &#39;zeno&#39;
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#d7827e">cargo</span> new zeno
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#d7827e">$ </span>cargo new zeno
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#9893a5"># run our application for good luck
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#d7827e">cargo</span> run
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#d7827e">$ </span>cargo run
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>    <span style="color:#d7827e">Finished</span> `dev` profile <span style="color:#797593">[</span>unoptimized + debuginfo<span style="color:#797593">]</span> target<span style="color:#797593">(</span><span style="color:#d7827e">s</span><span style="color:#797593">)</span> in <span style="color:#ea9d34">0</span>.00s
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>     <span style="color:#d7827e">Running</span> `target/debug/zeno`
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span><span style="color:#d7827e">Hello</span>, world!</span></span></code></pre>
 </figure>
-<p>Great! the hardest part is done now.</p>
-<p>Rest will be <strong>easy.</strong></p>
+<p>Great! the hardest part is done now. Rest will be <strong>easy.</strong></p>
+<h2 id="leaving-kernel-dependencies-behind">Leaving kernel dependencies behind</h2>
 <p>Next. We need to make sure we remove any connection between our rust binary to our host operating system.</p>
 <p><strong>Here&rsquo;s why:</strong></p>
-<p>By default, rust and its standard library depend heavily on OS abstractions to do a lot of heavylifting for us.</p>
-<p>Rust&rsquo;s standard library assumes the presence of an underlying OS and the C runtime.</p>
-<p>When you invoke the <code>println!</code> macro, rust makes syscalls to the host operating system to make stuff show up on your screen.</p>
-<p>When you allocate something, Rust relies on the operating system to manage memory for it. i.e the interaction between your rust programs, and the physical RAM on your system</p>
-<p>Most of what you do in rust, whether it be I/O, Memory, Syscalls, the whole lot, in one way or other rust relies on your operating system to do them.</p>
-<p>However, in our case, <strong>there is no OS</strong>. We are writing our <em>own</em> operating system. Which means whatever rust relies on to do those aforementioned things, Gone!</p>
-<p>What&rsquo;d happen when rust tries to access them? Nothing good that&rsquo;s for sure, so we need to get rid of any references to those things.</p>
-<p>Step 1. Tell rust to avoid using those things.</p>
-<p>Add the <code>#![no_std]</code> attribute at the top of your <code>main.rs</code> file, and run it.</p>
+<p>By default, rust and its standard library depend heavily on OS abstractions to do a lot of heavylifting for us and thus, it assumes the presence of an underlying OS and the C runtime.</p>
+<p>When you invoke the <code>println!</code> macro, or allocate memory, and pretty much anything that has to do with I/O, rust makes syscalls to the host operating system to make stuff happen.</p>
+<p>However, in our case, <strong>there is no OS</strong>. We are writing our <strong>own</strong> operating system. Which means whatever abstractions rust relies on to perform those tasks, Gone!</p>
+<p>We cannot access them anymore so we need to get rid of any reference to them.</p>
+<p>Step 1. Tell rust to avoid using the standard library.</p>
+<p>We do this by adding the <code>#![no_std]</code> attribute at the top of our <code>main.rs</code> file.</p>
 <p>The <code>no_std</code> attribute explicitly blocks rust from linking any parts of its standard library in our binary (which is the rust compiler&rsquo;s default behavior)</p>
-<p>Only the <code>core</code> library remains. Everything else, that relies on an underlying OS is gone. <code>core</code> is platfor agnostic, so we can keep it.</p>
+<p>Only the <code>core</code> library remains. Everything else, that relies on an underlying OS is gone.</p>
+<p>The <code>core</code> library is platform agnostic, so we can keep it.</p>
 <figure class="highlight">
     <pre
         tabindex="0"
@@ -173,9 +183,9 @@
     ><code class="language-sh" data-lang="sh"><span class="codeblock-filename">compiling with the no_std attribute</span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>Compiling zeno v0.1.0 <span style="color:#797593">(</span>/path/to/zeno<span style="color:#797593">)</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>error: cannot find macro <span style="color:#ea9d34">`</span>println<span style="color:#ea9d34">`</span> in this scope
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>--&gt; src/main.rs:4:5
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#797593">|</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>  <span style="color:#797593">|</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#ea9d34">4</span> <span style="color:#797593">|</span>     println!<span style="color:#797593">(</span><span style="color:#ea9d34">&#34;Hello, world!&#34;</span><span style="color:#797593">)</span><span style="color:#797593">;</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#797593">|</span>     ^^^^^^^
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>  <span style="color:#797593">|</span>     ^^^^^^^
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>error: <span style="color:#ea9d34">`</span><span style="color:#9893a5">#[panic_handler]` function required, but not found</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>
@@ -235,8 +245,8 @@
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    <span style="color:#286983">loop</span> <span style="color:#797593">{}</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#797593">}</span></span></span></code></pre>
 </figure>
-<p>Additionally, another one of the default behaviors of the rust compiler is to unwind the stack whenever a program panics. This is done to allow cleanup of resources like memory, files, etc by calling <code>Drop::drop</code> methods on each stack frame. We&rsquo;ve disabled that behavior by setting <code>panic = &quot;abort&quot;</code> in our <code>Cargo.toml</code> because a panic in <em>our</em> kernel means immediate shutdown i.e aborting the entire kernel.</p>
-<p>To fix this, we also need to add the following in our <code>Cargo.toml</code> to tell rust that we are no longer using <code>unwinding</code> panics.</p>
+<p>Additionally, another one of the default behaviors of the rust compiler is to unwind the stack whenever a program panics. This is done to allow cleanup of resources like memory, files, etc by calling <code>Drop::drop</code> methods on each stack frame.</p>
+<p>However, a panic in <em>our</em> kernel means immediate shutdown i.e aborting the entire kernel. So we tell rust that we are no longer using <code>unwinding</code> panics by setting <code>panic = &quot;abort&quot;</code> in our <code>Cargo.toml</code></p>
 <figure class="highlight">
     <pre
         tabindex="0"
@@ -292,7 +302,7 @@
 <p><strong>Wait what!?</strong> C has a runtime??</p>
 <p>Isn&rsquo;t C one of those languages that can just run without any runtime?</p>
 <p>Well.. yes, but not quite.</p>
-<p>When you hear the C &ldquo;runtime&rdquo;, its not a runtime in the traditional sense as in, there&rsquo;s no VM or an interpreter that runs your programs, instead runtime in this case basically means that the <code>main</code> gets wired to the <code>crt0</code> startup routines.</p>
+<p>When you hear the C &ldquo;runtime&rdquo;, its not a runtime in the traditional sense as in, there&rsquo;s no VM or an interpreter that runs your programs, instead runtime in this case basically means that the <code>main</code> function gets wired to the <code>crt0</code> startup routines.</p>
 <p>The <code>crt0</code> routines do a bunch of things including (but not limited to) making sure that you have a valid stack to work with, initializing the heap for you so that you can dynamically allocate memory, and gathering all the arguments to your program as well as the environment variables.</p>
 <p>When you write C programs it&rsquo;s not</p>
 <figure class="highlight">
@@ -347,8 +357,7 @@
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span><span style="color:#9893a5"># macOS</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>cargo rustc -- -C link-args<span style="color:#797593">=</span><span style="color:#ea9d34">&#34;-e __start -static -nostartfiles&#34;</span></span></span></code></pre>
 </figure>
-<p>Now, if we try to build our kernel using these arguments.</p>
-<p>It shows</p>
+<p>Now, if we try to build our kernel using these arguments</p>
 <figure class="highlight">
     <pre
         tabindex="0"
@@ -359,7 +368,7 @@
 <p>🎉 Woohooo!!</p>
 <p>We&rsquo;re now completely detached from our OS boundaries and have ventured into the deep waters. We&rsquo;re on our own now.</p>
 <p>There&rsquo;s no entry point to our program anymore, so we can&rsquo;t run anything.</p>
-<p>But at least the code compiles.</p>
+<p>But still. At least the code compiles.</p>
 <p>In the next post, we&rsquo;ll explore how we&rsquo;ll setup a new entry point to our OS, and also try to get it to boot.</p>
 
   <div class="time"><time datetime="January 30, 2026">January 30, 2026</time>

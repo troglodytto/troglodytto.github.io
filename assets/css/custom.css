@@ -4,12 +4,13 @@
     --bg-s: 0%;
     --bg-l: 99%;
 
-    --container-width: clamp(720px, 70dvw, 1200px);
+    --color-primary: oklch(0.705 0.213 47.604);
+    --container-width: clamp(900px, 70dvw, 1200px);
     --spacing-base: 1.25em;
     --pre-border-radius: 0.25rem;
-    --font-size-code: 0.9em;
+    --font-size-code: 0.8em;
     --font-size-base: 1.25em;
-    --font-size-small: 1.125em;
+    --font-size-small: 0.8em;
     --font-family-mono: monospace;
     --color-border: hsl(var(--bg-h) var(--bg-s) calc(100% - var(--bg-l)) / 10%);
 }
@@ -18,6 +19,11 @@
     --bg-h: 0;
     --bg-s: 0%;
     --bg-l: 10%;
+}
+
+em,
+strong {
+    color: color-mix(in oklch, var(--color-primary), white 10%);
 }
 
 figure {
@@ -67,7 +73,29 @@ h1 {
 }
 
 h2 {
-    font-size: 1rem;
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    text-underline-offset: 0.25rem;
+    background-color: color-mix(
+        in oklch,
+        var(--color-primary),
+        transparent 90%
+    );
+    border-radius: 0.25rem;
+    padding-inline: 0.5rem;
+    width: fit-content;
+    border: 1px dotted var(--color-primary);
+    position: relative;
+}
+
+h2::after {
+    content: "📌";
+    position: absolute;
+    right: -2rem;
+}
+
+h3 {
+    color: var(--color-primary);
 }
 
 .codeblock-filename {
@@ -81,8 +109,6 @@ h2 {
 .counter-btn {
     background: var(--color-bg-muted);
     border: 1px solid var(--color-border);
-    /*
-    box-shadow: 1px 1px 2px var(--color-text-primary);*/
     border-radius: 4px;
     padding: 0.5rem 0.75rem;
     cursor: pointer;
