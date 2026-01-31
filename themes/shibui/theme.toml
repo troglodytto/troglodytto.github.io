@@ -1,0 +1,21 @@
+# theme.toml template for a Hugo theme
+# See https://github.com/gohugoio/hugoThemes#themetoml for an example
+
+name = "Shibui (渋い)"
+license = "MIT"
+licenselink = "https://github.com/ntk148v/shibui/blob/main/LICENSE"
+description = "Shibui is a yet another minimalistic Hugo theme"
+homepage = "https://github.com/ntk148v/shibui"
+demosite = "https://ntk148v.github.io/shibui"
+tags = ["minimalist", "clean", "responsive", "blog", "simple"]
+features = ["responsive"]
+
+[author]
+name = "ntk148v"
+homepage = "https://github.com/ntk148v"
+
+[module]
+[module.hugoVersion]
+extended = false
+min = "0.93.0"
+
