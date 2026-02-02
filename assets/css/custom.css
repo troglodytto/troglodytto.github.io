@@ -27,10 +27,6 @@ strong {
     color: color-mix(in oklch, var(--color-primary), white 10%);
 }
 
-figure:has(img) {
-    padding: 0.5rem;
-}
-
 figure img {
     padding: 0 !important;
     border: none;
@@ -101,7 +97,8 @@ h3 {
 }
 
 .counter-btn,
-.theme-toggle {
+.theme-toggle,
+.copy-button {
     border: 1px solid var(--color-border);
     background: var(--color-bg-muted);
 }
@@ -116,19 +113,30 @@ h3 {
     cursor: grabbing;
 }
 
-.theme-toggle {
-    border-radius: 0.75rem;
+.theme-toggle,
+.copy-button {
     height: 2rem;
     width: 2rem;
     display: grid;
     place-items: center;
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
     cursor: pointer;
 }
 
-.theme-toggle svg {
+.copy-button {
+    border-radius: 0.25rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.theme-toggle {
+    border-radius: 0.75rem;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+}
+
+:where(.theme-toggle, .copy-button) svg {
     stroke: var(--color-primary);
 }
 
