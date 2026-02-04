@@ -181,6 +181,12 @@ pre.chroma {
     margin: 0;
 }
 
+th,
+td {
+    border: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border) !important;
+}
+
 @media screen and (max-width: 600px) {
     h2::after {
         display: none;
