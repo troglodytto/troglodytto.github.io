@@ -145,7 +145,7 @@ Let's first talk about how the CPU gets to a given memory location.
 >
 > `physical_address = ((data_segment << 4) + offset) & 0xfffff`
 >
-> The data segment register is shifted left by 4 bits to CPU to address up to 1 MiB (2^20 bytes) of memory, even though individual segment offsets are limited to 64 KiB (2^20 bytes).
+> The data segment register is shifted left by 4 bits to allow the CPU to address up to 1 MiB (2^20 bytes) of memory, even though individual segment offsets are limited to 64 KiB (2^20 bytes).
 > 
 > That extra `& 0xfffff` is to signify that the addresses above 1MiB are wrapped around, because 8086 only has a 20 bit address bus.
 >
@@ -176,7 +176,7 @@ Let's first talk about how the CPU gets to a given memory location.
 ### The registers we need to know about
 > **AX register (ax, ah, al)**
 >
-> It is a 16 bit general purpose register that can be used to store arbitrary data. The aforementioned instructions are used to load and store data. For our purposes we will use it as a negotiator between our memory and the VGA buffer.
+> It is a 16 bit general purpose register that can be used to store arbitrary data. The aforementioned instructions are hard wired to used it to load and store data. For our purposes we will use it as a negotiator between our memory and the VGA buffer.
 >
 > The `ax` register itself is broken down into two smaller 8 bit registers namely `ah` and `al` which refer to the higher (most significant) 8 bits and lower (least significant) 8 bits of the `ax` register respectively
 
@@ -186,7 +186,7 @@ Let's first talk about how the CPU gets to a given memory location.
 
 > **CS register**
 > 
-> The code segment register is a specialized 16 bit register that stores the current segment of the currently executing instructions
+> The code segment register is a specialized 16 bit register that stores the segment of the currently executing instructions/code
 
 > **CX register**
 >
@@ -235,7 +235,7 @@ CELL_COUNT equ VGA_BUFFER_WIDTH * VGA_BUFFER_HEIGHT
     mov ds, ax ; <- then move from `ax` to `es`
 
     ; similarly, the `stosw` instruction will use the `es:di` segment pair
-    ; we set the base i.e the segment register in that pair equal to the VGA base
+    ; so we set the base i.e the segment register in that pair equal to the VGA base
     ; we'll use the destination index register (`di`) to write to subsequent addresses
     ; in that buffer
     ;
@@ -255,7 +255,7 @@ CELL_COUNT equ VGA_BUFFER_WIDTH * VGA_BUFFER_HEIGHT
     
     ; we clear the direction flag to make sure that when the CPU encounters 
     ; any instructions that move the `si`/`di`/`cx` registers, it moves them 
-    ; in the right direction i.e increment (as opposed to decrement, if the flag is not set)
+    ; in the right direction i.e increment (as opposed to decrement, if the flag is set)
     cld
 
 
@@ -282,7 +282,7 @@ CELL_COUNT equ VGA_BUFFER_WIDTH * VGA_BUFFER_HEIGHT
 ; the `ax` register contains our character in its lower half that we just loaded using the `lodsb` instruction
 ; as well as the attribute byte in its upper half, that we loaded manually earlier.
 ;
-; the `loop` instruction keeps this block repeating until the `cx` register hits zero
+; the `loop` instruction repeats this block until the `cx` register hits zero
 .perform_write_text:
     lodsb
     stosw
