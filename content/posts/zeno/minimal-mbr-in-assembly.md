@@ -153,7 +153,7 @@ Let's first talk about how the CPU gets to a given memory location.
 >
 > `(data_segment << 4) + offset & 0xfffff = 0xb8000`
 >
-> We can do this simply by setting our offset to zero, and dividing our address by 16. Our VGA base is cleanly divisible by 16 so it works out in our favor. In order to address the subsequent bits, we can just increment the offset register by one.
+> We can do this simply by setting our offset to zero, and dividing our base address by 16. Our VGA base is cleanly divisible by 16 so it works out in our favor. In order to address the subsequent bits, we can just increment the offset register by one.
 >
 > Concretely speaking, when we write to the buffer, we'd have to put `0xb8000 / 16` (or `0xb800`) in the data segment register, and the 0 in the offset register (which we'll increment when we need to address subsequent addresses like `0xb8001`, `0xb8002`, etc.)
 >
@@ -162,7 +162,7 @@ Let's first talk about how the CPU gets to a given memory location.
 ### The instructions we'll use
 > **lodsb** - Load String Byte
 > 
-> The lodsb instruction loads one byte from the location defined by `ds:si` segment pair and puts it in a register called the `al` register. It then moves the `si` register by 1 byte in the direction defined by the direction flag, which can either be 0 (to represent an increment) or 1 (to represent a decrement). 
+> The lodsb instruction loads one byte from the location defined by `ds:si` segment pair and puts it in a register called the `al` register. It then moves the `si` register by 1 byte in the direction defined by the direction flag, which can either be 0 (to represent an increment) or 1 (to represent a decrement).
 >
 > The direction flag is a flag present at the 10th bit in the 16 bit `FLAGS` register used to define a left-to-right or right-to-left direction. For our purpose, it must be set to 0 to signify an increment.
 
@@ -171,7 +171,7 @@ Let's first talk about how the CPU gets to a given memory location.
 > The stosw instruction can be thought of as the opposite of the lodsb instruction.
 > It stores a word (2 bytes, in x86) from the `ax` register and puts it in the memory location defined by the `es:di` segment pair. Then it moves the `di` register by 1 word i.e 2 bytes (based on the direction flag, in our case, +2).
 > 
-> We use the stosw instead of the stosb since we can write two bytes at once with this instruction (and we need to write two bytes for one cell, one character byte and one attribute byte)
+> We use the stosw instead of the stosb since we need to write two bytes for one cell, one character byte and one attribute. The stosw instruction writes the entire contents of the `ax` register (16 bits / 1 word) to the given memory address. We'll pack the character and attribute bytes in the upper and lower 8 bit halves of the `ax` register, hence we'll be able to write a full character along with its attribute byte, in one single instruction, instead of writing a character byte and then subsequently writing an attribute byte (using 2 separate instructions).
 
 ### The registers we need to know about
 > **AX register (ax, ah, al)**
