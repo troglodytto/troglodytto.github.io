@@ -1,7 +1,7 @@
 +++
 date = '2026-02-08T20:36:02+05:30'
 draft = false
-title = 'Beliefs (Things I believe to be true)'
+title = 'Things I believe to be true'
 +++
 
 Over the years, throughout my life, I've formulated beliefs that I hold to be true. These beliefs have shaped my perspective and guided my actions. Here are some of the things I believe to be true:

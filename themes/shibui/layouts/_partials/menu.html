@@ -28,6 +28,14 @@ Renders a menu for the given menu ID.
       {{- $attrs = merge $attrs (dict "class" "ancestor" "aria-current" "true") }}
     {{- end }}
     {{- $attrs = merge $attrs (dict "class" "menu-entry") }}
+    {{- with .Params.draft }}
+       {{- $attrs = merge $attrs (dict "class" "menu-entry draft" "title" "This post is a draft.")}}
+    {{- end }}
+
+    {{- with .Params.hidden }}
+       {{- $attrs = merge $attrs (dict "hidden" "true")}}
+    {{- end }}
+
     {{- $name := .Name }}
     {{- with .Identifier }}
       {{- with T . }}
@@ -41,7 +49,7 @@ Renders a menu for the given menu ID.
             {{- printf " %s=%q" $k $v | safeHTMLAttr }}
           {{- end }}
         {{- end -}}
-      ><strong>{{ $name }}</strong>{{- with .Params.subtitle }} <span class="menu-subtitle">{{ . }}</span>{{- end }}</a>
+      ><div class="menu-entry-title"><strong>{{ $name }}</strong>{{- with .Params.draft }} <span class="draft-indicator">draft</span> {{- end }}</div>{{- with .Params.subtitle }} <span class="menu-subtitle">{{ . }}</span>{{- end }}</a>
       {{- with .Children }}
         <ul>
           {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
