@@ -192,3 +192,8 @@ td {
         display: none;
     }
 }
+
+li::marker {
+    content: "◉ ";
+    color: var(--color-primary);
+}

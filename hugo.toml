@@ -21,6 +21,14 @@ theme = "shibui"
         [menu.main.params]
           subtitle = "Implementing the HTTP protocol from scratch"
 
+    [[menu.main]]
+        name = "Beliefs"
+        url = "/posts/beliefs"
+        weight = 3
+        identifier = "beliefs"
+        [menu.main.params]
+        subtitle = "Things I believe to be true"
+
 [markup]
     [markup.highlight]
         style = "rose-pine-dawn"
