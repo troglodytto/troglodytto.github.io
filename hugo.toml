@@ -12,19 +12,23 @@ theme = "shibui"
         identifier = "zeno"
         [menu.main.params]
           subtitle = "Writing an OS kernel in Rust"
+          # draft = true
+          # hidden = true
 
     [[menu.main]]
         name = "Hyperion"
         url = "/posts/hyperion"
-        weight = 2
+        weight = 300
         identifier = "hyperion"
         [menu.main.params]
           subtitle = "Implementing the HTTP protocol from scratch"
+          draft = true
+          hidden = true
 
     [[menu.main]]
         name = "Beliefs"
         url = "/posts/beliefs"
-        weight = 3
+        weight = 200
         identifier = "beliefs"
         [menu.main.params]
         subtitle = "Things I believe to be true"
