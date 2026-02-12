@@ -231,8 +231,8 @@ CELL_COUNT equ VGA_BUFFER_WIDTH * VGA_BUFFER_HEIGHT
     ; first load the value in an intermediate register (`ax`) and then perform a
     ; register to register move operation from `ax` to `ds`
     ; es <- ax <- 0xb800
-    mov ax, cs ; <- load base address into `ax`
-    mov ds, ax ; <- then move from `ax` to `es`
+    mov ax, cs ; 👈 load base address into `ax`
+    mov ds, ax ; 👈 then move from `ax` to `es`
 
     ; similarly, the `stosw` instruction will use the `es:di` segment pair
     ; so we set the base i.e the segment register in that pair equal to the VGA base
