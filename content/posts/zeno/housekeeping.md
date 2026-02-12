@@ -30,8 +30,12 @@ To do this, we first create the `kernel/src/lib.rs` file, and import it in the `
 ```rs {title="kernel/src/lib.rs"}
 #![no_std] // 👈 remember to add the #![no_std] attribute in your lib.rs file as well
 
+//! Zeno - Minimal x86-64 Operating System Kernel
+
 use bootloader_api::BootInfo;
 
+/// Initialize the Zeno OS Kernel by implementing the following:
+/// -
 pub fn init(_: &'static mut BootInfo) {
     // we'll initialize kernel sub-systems here
 }
@@ -125,6 +129,10 @@ Add these lints at the top of your `lib.rs` (and additionally, your `main.rs` fi
     clippy::verbose_file_reads,
     clippy::zero_sized_map_values,
     clippy::redundant_pattern,
+    clippy::missing_panics_doc,
+    clippy::missing_errors_doc,
+    clippy::empty_docs,
+    clippy::missing_safety_doc,
     future_incompatible,
     nonstandard_style,
     rust_2018_idioms,
