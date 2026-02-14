@@ -6,17 +6,24 @@ slug = 'housekeeping'
 toc = false
 +++
 
-This post is tangential to the original series where we perform a bunch of simple housekeeping tasks to keep our code organized and allow it to scale efficiently. Not too many changes, just some additions that can make our code more robust and easier to maintain.
+📝 This post is tangential to the original series. If you'd like to continue reading, you can find the next post [**here**](../serial-output).
 
-If you'd like to continue reading, you can find the next post [**here**](../serial-output).
+---
+
+So far we've been writing our code in a single place because we were just experimenting with things.
+
+But now, before we continue building features, we need to pause and set up a scalable foundation. Kernel projects grow quickly and without structure, they become painful to maintain. In this post, we'll perform a few housekeeping tasks to keep our code organized, robust, and future-proof.
+
+Nothing new conceptually today. We're just organizing.
 
 We'll break this down into three sections.
 
-- [The directory / module structure](#the-module-structure)
-- [Adding Lint rules](#adding-lint-rules)
-- [Adding some niceties](#some-niceties)
+- [Restructuring the Kernel Crate](#restructuring-the-kernel-crate)
+- [Enforcing Code Quality with Clippy](#enforcing-code-quality-with-clippy)
+- [Developer Experience Improvements](#developer-experience-improvements)
 
-## The module structure
+## Restructuring the Kernel Crate
+
 We'll keep our module structure fairly simple.
 
 We'll have a central `lib.rs` which exports all its submodules. Those submodules will then be used by the `main.rs` file under a consolidated `kernel` package.
@@ -52,12 +59,15 @@ pub fn init(_: &'static mut BootInfo) {
 
 Now that we've done that, we'll write most of our code in separate modules, initialize them in the `init` function, and then use the `main` and `launch` functions to drive them.
 
-## Adding lint rules
+## Enforcing Code Quality with Clippy
+
 To set our project up in such a way that it pushes us towards writing more robust, correct and idiomatic code, we'll add some lint rules. These lint rules will allow us to catch bugs early that we'd otherwise ignore as well as allow us to discover more idiomatic Rust code. Clippy has a bunch of lint rules that focus on correctness, style, complexity, and performance.
 
 Initially, we'll create a very strict set of lint rules that disallow a bunch of things. We'll later disable the rules that start to become annoyances rather than guardrails.
 
 Add these lints at the top of your `lib.rs` (and additionally, your `main.rs` file)
+
+Don't worry about understanding each lint individually, you can copy this block as-is. We'll encounter them naturally as we build features.
 
 ```rs {title="kernel/src/lib.rs (and kernel/src/main.rs)"}
 #![deny(
@@ -142,15 +152,17 @@ Add these lints at the top of your `lib.rs` (and additionally, your `main.rs` fi
 
 Phew! That many huh?
 
-Well, we do want to be as strict as possible. And in any case, if we feel that the lint is too strict for a some functionality that we need i.e it a becomes a hindrance, we'll disable it.
+Well, we do want to be as strict as possible. And in any case, if we feel that a lint becomes too strict for a specific piece of functionality i.e., it becomes a hindrance rather than a guardrail, we can disable it selectively.
 
-Additionally, instead of `warn` we've marked all the lints as `deny` meaning violation of any of these lints will be considered a hard error.
+Additionally, instead of `warn`, we've marked all the lints as `deny`, meaning violation of any of these lints will be considered a hard error.
+
+It might feel too strict at first, but future-you will thank you.
 
 As soon as you add these lints, and run the `cargo clippy` command, you'll see a bunch of things popping up. Don't worry, it's just a bunch of warnings that we can fix by adding `const` in front of the `init` and `panic_handler`
 
 > 💡 **Making sure our editor is also on the same page (regarding these lints)**
-> 
-> Some LSP enabled editors only run the `cargo check` command when checking for any issues. Unfortunately for us, that means we won't know we've broken any of our lint rules unless we run the `cargo clippy` command ourselves. 
+>
+> Some LSP enabled editors only run the `cargo check` command when checking for any issues. Unfortunately for us, that means we won't know we've broken any of our lint rules unless we run the `cargo clippy` command ourselves.
 >
 > To prevent this, we should configure our editor such that it runs the `cargo clippy` command instead, so that whenever we are in violation of any of these lints, the editor will highlight the error and prompt us to fix it immediately, instead of us having to run the command ourselves and then fixing them later.
 >
@@ -159,10 +171,11 @@ As soon as you add these lints, and run the `cargo clippy` command, you'll see a
 >
 > These are the editors that I personally use, so if you're using something else, please refer to the respective documentation for your editor.
 
-## Some niceties
-To make our lives easier down the line, we'll also install the `x86_64` crate since it provides abstractions for a lot of x86-64 architecture primitives (such as register read/writes, flag set/unset, etc) so it'll be helpful for us later down the line. 
+## Developer Experience Improvements
 
-Writing inline assembly is a bit tedious and error prone. Additionally, it requires a lot of `unsafe` blocks in or code, which will make audits more difficult. The `x86_64` crate will provide safe abstractions for these operations, making our code more readable and maintainable.
+To make our lives easier down the line, we'll also install the `x86_64` crate since it provides abstractions for a lot of x86-64 architecture primitives (such as register read/writes, flag set/unset, etc) so it'll be helpful for us later down the line.
+
+Writing inline assembly is a bit tedious and error prone. Additionally, it requires a lot of `unsafe` blocks in our code, which will make audits more difficult. The `x86_64` crate will provide safe abstractions for these operations, making our code more readable and maintainable.
 
 ```fish
 # in the kernel directory
@@ -184,4 +197,12 @@ fn launch(boot_info: &'static mut BootInfo) -> ! {
 
 ---
 
-With that, we're all set to continue working on our OS. Let's continue where we left off and implement [Serial Output and Debugging](../serial-output) via Port I/O.
+With that, we're all set to continue working on our OS.
+
+We now have:
+
+- A modular kernel architecture
+- Strict lint enforcement (via Clippy)
+- Architecture abstractions (via the `x86_64` crate)
+
+Let's continue where we left off and implement [Serial Output and Debugging](../serial-output) via Port I/O.
