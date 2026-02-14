@@ -230,9 +230,9 @@ CELL_COUNT equ VGA_BUFFER_WIDTH * VGA_BUFFER_HEIGHT
     ; we can't directly load an immediate value in the `ds` register so we
     ; first load the value in an intermediate register (`ax`) and then perform a
     ; register to register move operation from `ax` to `ds`
-    ; es <- ax <- 0xb800
-    mov ax, cs ; 👈 load base address into `ax`
-    mov ds, ax ; 👈 then move from `ax` to `es`
+    ; ds <- ax <- cs
+    mov ax, cs ; 👈 load base address i.e where our program itself is placed in memory (`0x7c00`) into `ax`
+    mov ds, ax ; 👈 then move from `ax` to `ds`
 
     ; similarly, the `stosw` instruction will use the `es:di` segment pair
     ; so we set the base i.e the segment register in that pair equal to the VGA base
@@ -241,8 +241,9 @@ CELL_COUNT equ VGA_BUFFER_WIDTH * VGA_BUFFER_HEIGHT
     ;
     ; we use a similar method to load the value into `es`
     ; i.e load value into `ax` and then move from `ax` to `es`
-    mov ax, 0xb800
-    mov es, ax
+    ; es <- ax <- 0xb800
+    mov ax, 0xb800 ; 👈 load VGA base address into `ax`
+    mov es, ax ; 👈 then move from `ax` to `es`
 
     ; since we start by writing to the 0th address in the VGA buffer,
     ; we initially set the destination index (`di`) register to zero
@@ -269,12 +270,18 @@ CELL_COUNT equ VGA_BUFFER_WIDTH * VGA_BUFFER_HEIGHT
     mov si, message
 
 .setup_write_text:
+    ; since the VGA buffer uses the upper half of a word as the attribute byte 
+    ; we fix the upper half of the `ax` register i.e the `ah` register to our attribute byte
+    ; 
+    ; while writing to the VGA buffer, even though we'll move the entire contents of the `ax` register
+    ; to the memory buffer, we'll only update the lower half (`al`) of it in order to change the characters 
+    ; being written to the screen, while keeping the `ah` intact. 
+    ; Which means, we can set the value in the `ah` register just once (during this initialization phase)
+    ; and forget about it
+    mov ah, ATTRIBUTE
+    
     ; we set up a counter so that we only iterate a fixed number of times (# of iterations = # of characters)
     mov cx, message_len
-    ; we'll use a fixed attribute byte for the time being and since the VGA buffer uses
-    ; the upper half of a word as the attribute byte we fix the upper half of the `ax` register 
-    ; i.e the `ah` register to our attribute byte
-    mov ah, ATTRIBUTE
 
 ; We repeatedly read from the address `ds:si`, load it into `al` (lower half of the ax register)
 ; and then write the `ax` register in its entirety to the address `es:di`
@@ -299,7 +306,10 @@ CELL_COUNT equ VGA_BUFFER_WIDTH * VGA_BUFFER_HEIGHT
     mov al, ' '
 
 ; Similar to our `perform_write_text` function, we do pretty much the same thing
+; but instead of reading a different character from memory in each iteration, 
+; we use a fixed empty space character.
 ; it is even more simplified due to the fact that most of the operands have already been set.
+; so now, we don't even have to load anything, just write, and increment until the counter hits zero
 .perform_clear:
     stosw
     loop .perform_clear
