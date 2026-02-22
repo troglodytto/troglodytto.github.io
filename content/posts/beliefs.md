@@ -8,9 +8,11 @@ Over the years, throughout my life, I've formulated beliefs that I hold to be tr
 
 - **You can do it.** If you put enough effort into it, it can be done. In the words of Marcus Aurelius, “Do not think that what is hard for you to master is humanly impossible; and if it is humanly possible, consider it to be within your reach.”
 
-- **Music** is the language of the universe, the earth and your soul. It can speak to ghosts in your head, it can transcend boundaries, and express emotion across the world and beyond. No matter what language, no matter what genre, no matter the instruments being used, every single note has something to say.
+- **Music** is the language of the universe, the earth and your soul. It can speak to ghosts in your head, it can transcend boundaries, and express emotion across the world and beyond. No matter what language, no matter what genre, no matter the instruments being used, every single note has something to say. Every single voice, every unique tone, every frequency is beautiful.
 
-- **Humanity is inherently good**. Every human has the capability and the will to do good. It's just that for some people certain emotions such as greed, anger, and fear are louder than their good intentions. Evolution has put us in a tough spot, but even then, humans chose to be good.
+- **Every human has the inherent ability to do good**. It's just that for some people certain emotions such as greed, anger, and fear are louder than their good intentions. Evolution has put us in a tough spot, but even then, humans chose to be good.
+
+- **Humanity is fucking amazing**. Curiosity, Tenacity, Collaboration, Empathy, and Love, Art, Peace, Complexity, Survival Instinct, Domination, Culture, Languages, Sadness and Happiness, Glee, Vicariousness and Science, Meta cognition, Philosophy and Intent, and god knows a lot more, everything, are uniquely human traits. I love humanity.
 
 - **There is a God**. Or at least, some sort of sentient, supreme entity that is watching over us. It gives us strength, and patience. The complexity of this universe should not be taken for granted. It is a testament to the power of creation and the beauty of existence.
 
