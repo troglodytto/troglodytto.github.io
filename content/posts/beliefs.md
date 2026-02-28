@@ -26,7 +26,7 @@ Over the years, throughout my life, I've formulated beliefs that I hold to be tr
     
     - To share that knowledge to as many people that I can
     
-    - and, to holistically help who are less fortunate than I am (Food, Water, Education, Cleanliness, Healthcare, and Employment)
+    - and, to holistically help who are less fortunate than I am (Food, Water, Education, Cleanliness, Healthcare, and Employment). See the [**How can I help?**](../how-can-i-help) page for more details.
 
 - **Life is fundamentally beautiful**. It is serene and amazing. Noticing the little things is an **art**, and once you master this art, you'll have a much more beautiful perspective on the world. You'll see pretty colors, and pleasant smells, and nice sounds. Not only that, but you'll start to notice the things that you never paid attention to, like the light of the moon, the sound of the wind, and the warmth of the sun, the smell of the rain, and the taste of the food and a million others.
 
