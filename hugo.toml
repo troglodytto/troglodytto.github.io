@@ -33,6 +33,14 @@ theme = "shibui"
         [menu.main.params]
         subtitle = "Things I believe to be true"
 
+    [[menu.main]]
+        name = "How can I help?"
+        url = "/posts/how-can-i-help"
+        weight = 200
+        identifier = "how-can-i-help"
+        [menu.main.params]
+        subtitle = "Just an effort to bring a little light to the world"
+
 [markup]
     [markup.highlight]
         style = "rose-pine-dawn"
