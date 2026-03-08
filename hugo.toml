@@ -41,6 +41,14 @@ theme = "shibui"
         [menu.main.params]
         subtitle = "Just an effort to bring a little light to the world"
 
+    [[menu.main]]
+        name = "Sunset"
+        url = "/posts/sunset"
+        weight = 200
+        identifier = "sunset"
+        [menu.main.params]
+        subtitle = "A séance for my own soul"
+
 [markup]
     [markup.highlight]
         style = "rose-pine-dawn"
