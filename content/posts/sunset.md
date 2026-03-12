@@ -37,6 +37,8 @@ in the white snow, so cold. a perfect blanket, for the perfect night, the perfec
 and yes, you are right, in some sense. i am not afraid, death is a saint.
 i just wonder, what would happen when the dust settles? more importantly, would i care? would i know? when i see posts online, that someone passed away, i always get the points of views of other people, their sadness, but never the ones to said good bye, does that mean they're relieved, or at least, suffering no longer. i could be too.
 
+the soul i am, left a while ago. the she would reunite us.
+
 would i suffer no longer. a question so simple.
 
 i won't do it tonight trust me, i won't do it **tonight**.
