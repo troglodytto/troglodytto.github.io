@@ -49,6 +49,8 @@ Here's a small list of things that _I_ could think of:
 
 - Use my computing power towards distributed folding. One of the many things the medical research requires is compute power. A few amazing people came together and invented distributed folding that can allow them to distribute that compute requirement across many willing participants. When I am not using my computer, I'll try to run the **Folding at Home** software to contribute towards that research.
 
+- Support content creators that I believe in. Encourage them, push them. Let them know that their content is worth watching. Let them know that their efforts are appreciated.
+
 - I'll try to tip more. Or maybe order something and tell the delivery person to keep it for themselves.
 
 - I'll buy stuff from new and striving businesses. They need encouragement more than anything, even small purchases, small gestures, a small note to tell them, that their product is great, I will do that.
