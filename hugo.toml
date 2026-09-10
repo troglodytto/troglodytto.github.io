@@ -26,6 +26,14 @@ theme = "shibui"
           hidden = true
 
     [[menu.main]]
+        name = "Agent workflow"
+        url = "/posts/agent-workflow"
+        weight = 200
+        identifier = "agent-workflow"
+        [menu.main.params]
+        subtitle = "Rebuilding an agent setup from zero"
+
+    [[menu.main]]
         name = "Beliefs"
         url = "/posts/beliefs"
         weight = 200
