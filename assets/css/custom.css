@@ -243,3 +243,10 @@ li::marker {
 .menu-entry[hidden="true"] {
     display: none;
 }
+
+/* Separates the technical entries from the personal ones in the main menu. */
+nav li.menu-divider {
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--spacing-base);
+    padding-top: var(--spacing-base);
+}

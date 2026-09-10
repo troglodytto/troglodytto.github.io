@@ -5,7 +5,7 @@ title = 'How can I Help?'
 toc = false
 +++
 
-I've previously talked about how I perceive the world to be a beautiful place in my [beliefs](../beliefs) page.
+I've previously talked about how I perceive the world to be a beautiful place in my [beliefs]({{< ref "/posts/beliefs.md" >}}) page.
 
 **But..** misery is unfortunately also a part of the human condition.
 

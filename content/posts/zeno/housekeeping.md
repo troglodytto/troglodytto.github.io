@@ -6,7 +6,7 @@ slug = 'housekeeping'
 toc = false
 +++
 
-📝 This post is tangential to the original series. If you'd like to continue reading, you can find the next post [**here**](../serial-output).
+📝 This post is tangential to the original series. If you'd like to continue reading, you can find the next post [**here**]({{< ref "/posts/zeno/ch05.md" >}}).
 
 ---
 
@@ -205,4 +205,4 @@ We now have:
 - Strict lint enforcement (via Clippy)
 - Architecture abstractions (via the `x86_64` crate)
 
-Let's continue where we left off and implement [Serial Output and Debugging](../serial-output) via Port I/O.
+Let's continue where we left off and implement [Serial Output and Debugging]({{< ref "/posts/zeno/ch05.md" >}}) via Port I/O.

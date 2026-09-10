@@ -348,4 +348,4 @@ times 510 - ($ - $$) db 0
 dw 0xAA55
 ```
 
-Let's go back to our [main post](../booting-into-our-kernel/#a-bootloader) and continue there.
+Let's go back to our [main post]({{< ref "/posts/zeno/ch03.md#a-bootloader" >}}) and continue there.

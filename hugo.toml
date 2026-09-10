@@ -7,7 +7,7 @@ theme = "shibui"
 [menu]
     [[menu.main]]
         name = "Zeno"
-        url = "/posts/zeno"
+        pageRef = "/posts/zeno"
         weight = 1
         identifier = "zeno"
         [menu.main.params]
@@ -17,8 +17,8 @@ theme = "shibui"
 
     [[menu.main]]
         name = "Hyperion"
-        url = "/posts/hyperion"
-        weight = 300
+        pageRef = "/posts/hyperion"
+        weight = 40
         identifier = "hyperion"
         [menu.main.params]
           subtitle = "Implementing the HTTP protocol from scratch"
@@ -26,33 +26,50 @@ theme = "shibui"
           hidden = true
 
     [[menu.main]]
+        name = "Daiquiri"
+        pageRef = "/posts/cluster-triage"
+        weight = 10
+        identifier = "cluster-triage"
+        [menu.main.params]
+        subtitle = "Untangling a broken production at 3AM"
+
+    [[menu.main]]
+        name = "Rust give you wings"
+        pageRef = "/posts/rust-gives-you-wings"
+        weight = 20
+        identifier = "rust-gives-you-wings"
+        [menu.main.params]
+        subtitle = "Shameless propaganda for a compiler that argues back"
+
+    [[menu.main]]
         name = "Agent workflow"
-        url = "/posts/agent-workflow"
-        weight = 200
+        pageRef = "/posts/agent-workflow"
+        weight = 30
         identifier = "agent-workflow"
         [menu.main.params]
         subtitle = "Rebuilding an agent setup from zero"
 
     [[menu.main]]
         name = "Beliefs"
-        url = "/posts/beliefs"
-        weight = 200
+        pageRef = "/posts/beliefs"
+        weight = 100
         identifier = "beliefs"
         [menu.main.params]
         subtitle = "Things I believe to be true"
+        divider = true
 
     [[menu.main]]
         name = "How can I help?"
-        url = "/posts/how-can-i-help"
-        weight = 200
+        pageRef = "/posts/how-can-i-help"
+        weight = 110
         identifier = "how-can-i-help"
         [menu.main.params]
         subtitle = "Just an effort to bring a little light to the world"
 
     [[menu.main]]
         name = "Sunset"
-        url = "/posts/sunset"
-        weight = 200
+        pageRef = "/posts/sunset"
+        weight = 120
         identifier = "sunset"
         [menu.main.params]
         subtitle = "A séance for my own soul"
