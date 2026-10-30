@@ -20,19 +20,25 @@ Over the years, throughout my life, I've formulated beliefs that I hold to be tr
 
 - **Death is a saint**. People consider death to be something scary and something to be avoided, but it is a natural part of the human experience and should be respected and honored. I'd go far as to say that I would like people to celebrate when I leave this world.
 
-- **Every human has a purpose**. You've born in this world because the universe has a plan for you. You are here to fulfill a specific role and contribute to the greater good. Embrace your purpose and make the most of your time on earth. 
+- **Every human has a purpose**. You've born in this world because the universe has a plan for you. You are here to fulfill a specific role and contribute to the greater good. Embrace your purpose and make the most of your time on earth.
   - What I believe to be **\*my\*** purpose in this universe are three things:
     - To attain as much knowledge I can (Especially about how the universe works, how the human body works, and how can computers be used to improve human healthcare).
-    
     - To share that knowledge to as many people that I can
-    
     - and, to holistically help who are less fortunate than I am (Food, Water, Education, Cleanliness, Healthcare, and Employment). See the [**How can I help?**]({{< ref "/posts/how-can-i-help.md" >}}) page for more details.
 
 - **Life is fundamentally beautiful**. It is serene and amazing. Noticing the little things is an **art**, and once you master this art, you'll have a much more beautiful perspective on the world. You'll see pretty colors, and pleasant smells, and nice sounds. Not only that, but you'll start to notice the things that you never paid attention to, like the light of the moon, the sound of the wind, and the warmth of the sun, the smell of the rain, and the taste of the food and a million others.
 
 - **Everything will be okay.** If it is not okay right now, it will be. It could take time, and it might hurt a little, but in the end, it will turn out to be fine. You'll be in a better place than you are right now, you'll be happier, you'll be better. And If you think that life is going downhill, it will turn around soon, and It will be better than it was earlier.
 
-
 - **Talent and Hardwork are not mutually exclusive**. When you work hard enough at something, you become intrinsically talented at it. The more you practice, the better you get, and the more you get better, the more talented you become. It's a virtuous cycle that leads to success and fulfillment.
 
 - **DO. IT. WELL.** In the battle of "Doing it well, but with high effort" and "Doing it with a little effort, but only sub-optimally", always chose to do it well. Always.
+
+### Operating Principles
+
+- Freudenfreude
+- Weltschmerz
+- Provide equal opportunity for others
+- Be Kind, Empathetic, Gentle
+- **Share:** What you have. Give to the world. Happiness, Life, Knowledge, Calmness, Peace.
+- **Boy Scout Rule:** Leave the place in a better condition than you found it. And that does not apply just to a camp site, it applies to, a state of mind of a human, it applies to a codebase, a friend, the world.
